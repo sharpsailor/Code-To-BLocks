@@ -1,3 +1,5 @@
+# Link
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
 # Intuition
 
 Iniution is simple since we cant allocate a new array we need to make changes to the one we have . This is possible using a ptr which tracks the previous duplicate element.
