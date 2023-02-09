@@ -1,7 +1,7 @@
 package LinkedList;
 import java.util.*;
 import java.io.*;
-public class get {
+public class RemoveFirst {
 
 	public static class Node {
 	    int data;
@@ -40,51 +40,17 @@ public class get {
 	    }
 
 	    public void removeFirst(){
-	      if(size == 0){
-	        System.out.println("List is empty");
-	      } else if(size == 1){
-	        head = tail = null;
-	        size = 0;
-	      } else {
-	        head = head.next;
-	        size--;
-	      }
-	    }
-
-	    public int getFirst(){
 	      // write your code here
 	    	if(size==0) {
 	    		System.out.println("List is empty");
-	    		return -1;
-	    	}
-	    	return head.data;
-	    }
-
-	    public int getLast(){
-	      // write your code here
-	    	if(size==0) {
-	    		System.out.println("List is empty");
-
-	    		return -1;
-	    	}
-	    	return tail.data;
-	    }
-
-	    public int getAt(int idx){
-	      // write your code here
-	    	Node temp = head;
-	    	if(size==0) {
-	    		System.out.println("List is empty");
-	    		return -1;
-	    	}else if(idx<0 || idx>=size) {
-	    		System.out.println("Invalid arguments");
-	    		return -1;
+	    		return;
+	    	}else if(size==1) {
+	    		head = tail = null;
+	    		size--;
 	    	}else {
-	    		for(int i = 0;i<idx;i++) {
-	    			temp = temp.next;
-	    		}
+	    		head = head.next;
+	    		size--;
 	    	}
-	    	return temp.data; 
 	    }
 	  }
 
@@ -103,22 +69,6 @@ public class get {
 	        list.display();
 	      } else if(str.startsWith("removeFirst")){
 	        list.removeFirst();
-	      } else if(str.startsWith("getFirst")){
-	        int val = list.getFirst();
-	        if(val != -1){
-	          System.out.println(val);
-	        }
-	      } else if(str.startsWith("getLast")){
-	        int val = list.getLast();
-	        if(val != -1){
-	          System.out.println(val);
-	        }
-	      } else if(str.startsWith("getAt")){
-	        int idx = Integer.parseInt(str.split(" ")[1]);
-	        int val = list.getAt(idx);
-	        if(val != -1){
-	          System.out.println(val);
-	        }
 	      }
 	      str = br.readLine();
 	    }
