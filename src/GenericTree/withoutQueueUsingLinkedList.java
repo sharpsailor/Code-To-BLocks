@@ -27,24 +27,50 @@ public class withoutQueueUsingLinkedList {
 //		}
 //		
 //	}
-	public static void LevelOrderLineWise(Node node) {
-		LinkedList<Node> que = new LinkedList<>();
+	public static void levelOrderZigZag(Node node) {
+		LinkedList<Node> que = new LinkedList<>();//addLast
+		LinkedList<Node> stack = new LinkedList<>();//addFirst
 		que.addLast(node);
+		int level =0;
+		
 		while(que.size()!=0) {
-			int currSize = que.size();
+			int currSize= que.size();
 			while(currSize-->0) {
 				Node rnode = que.removeFirst();
 				System.out.print(rnode.data+" ");
-				for(Node child:rnode.children)
-				{
+				if(level%2==0) {
+					for(int i =0;i<rnode.children.size();i++) {
+						stack.addFirst(rnode.children.get(i));
+					}
+				}else {
+					for(int i=rnode.children.size()-1;i>=0;i--) {
+						stack.addFirst(rnode.children.get(i));
+					}
+				}
+			}
+			level++;
+			System.out.println(".");
+			LinkedList<Node> temp = que;
+			que=stack;
+			stack= temp;
+		}
+		
+	}
+	public static void levelOrderLineWise(Node node) {
+		LinkedList<Node> que = new LinkedList<>();
+		que.addFirst(node);
+		while(que.size()!=0) {
+			int currSize=que.size();
+			while(currSize-->0) {
+				Node rnode = que.removeFirst();
+				System.out.print(rnode.data+" ");
+				for(Node child : rnode.children) {
 					que.addLast(child);
 				}
 			}
-			System.out.println();
+			System.out.println(".");
 		}
-	}
-	public static void levelOrderZigZag(Node node) {
-		LinkedList<Node> que = new LinkedList<>();
+		
 	}
 
 	public static Node construct(int[]arr) {
@@ -109,7 +135,8 @@ public class withoutQueueUsingLinkedList {
 		// TODO Auto-generated method stub  
 		int[] arr = {10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,100,-1,-1,-1};
 		Node root = construct(arr);
-		LevelOrderLineWise(root);
+//		levelOrderLineWise(root);
+		levelOrderZigZag(root);
 		System.out.println("Size:");
 		System.out.println(size(root));
 

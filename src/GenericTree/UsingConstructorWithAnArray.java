@@ -47,8 +47,13 @@ public class UsingConstructorWithAnArray {
 		
 		return root;
 	}
-	public static void serialize(Node root, ArrayList<Integer>data) {
+	public static void serialize(Node node, ArrayList<Integer>list) {
 		//fill data like the array below
+		list.add(node.data);
+		for(Node child:node.children) {
+			serialize(child,list);
+		}
+		list.add(-1);
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
