@@ -62,6 +62,6 @@ public class UsingConstructorWithAnArray {
 		ArrayList<Integer> list = new ArrayList<>();
 		serialize(root,list);
 		System.out.println(list);
-		LevelOrderLinewise(root);
+//		LevelOrderLinewise(root);
 	}
 }

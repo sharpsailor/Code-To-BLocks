@@ -59,6 +59,6 @@ public class LinkedListDemo {
 		      str = br.readLine();
 		    }
 		    testList(list);
-	}
+}
 
 }
